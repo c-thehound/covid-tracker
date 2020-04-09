@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="ChartPie" transform="translate(0 0)">
+    <path id="Oval_125" data-name="Oval 125" d="M28,56A28.007,28.007,0,0,1,17.1,2.2,27.824,27.824,0,0,1,28,0V28H56A27.977,27.977,0,0,1,28,56Z" transform="translate(0 4)" fill="#2c97de"/>
+    <path id="Oval_126" data-name="Oval 126" d="M28,28H0V0A27.823,27.823,0,0,1,10.9,2.2a27.907,27.907,0,0,1,8.9,6,27.907,27.907,0,0,1,6,8.9A27.824,27.824,0,0,1,28,28Z" transform="translate(32)" fill="#1ece6d"/>
+  </g>
+</svg>
