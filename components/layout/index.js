@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import LandingBG from "../../assets/bgcovid.jpg";
@@ -39,13 +39,48 @@ const AppLayout = styled.div`
 `;
 
 function Layout(props) {
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			window.wow = require("wow.js");
+			new wow().init();
+		}
+	}, []);
 	return (
 		<AppLayout>
 			<Head>
-				<title>Covid-Tracker</title>
+				<title>Coronavirus(COVID-19)</title>
+				<meta
+					property="og:site_name"
+					content="coronavirus-tracker"
+				/>
+				<meta
+					property="og:title"
+					content="Coronavirus(COVID-19)"
+				/>
+				<meta
+					property="og:url"
+					content="https://coronavirus-teal.now.sh"
+				/>
+				<meta
+					property="og:image"
+					content="/coronav.jpg"
+				/>
+				<meta
+					property="og:description"
+					content="Tracker for the coronavirus pandemic"
+				/>
+				<meta property="og:type" content="website" />
+				<meta
+					name="description"
+					content="Track corona virus"
+				/>
 				<link
 					href="https://fonts.googleapis.com/css?family=Fredoka+One|Pacifico|Raleway&display=swap"
 					rel="stylesheet"
+				/>
+				<link
+					rel="stylesheet"
+					href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
 				/>
 			</Head>
 			<Tips />

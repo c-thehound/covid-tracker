@@ -20,9 +20,8 @@ function draw(data, type) {
 		 *-TODO: The API am using seems to return data only from 2020 Mar 17th. Is these supposed to happen?
 		 * */
 		const windowWidth = window.innerWidth;
-		d3.select(".viz > *").remove(); // Clear the 'canvas' first
 		var class_name = data.country.toLowerCase(); // className for the current working node ; cwn :D
-
+		d3.select(`.viz.${class_name} > *`).remove(); // Clear the 'canvas' first
 		var data = getUniqueArray(data.stat_by_country); // Get The real data
 
 		/*Am adding the date difference to the selected objects here*/

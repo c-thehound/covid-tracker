@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Layout from "../components/layout";
-
 const AboutWrapper = styled.div`
 	& h1,
 	h2,
@@ -39,7 +38,7 @@ function About(props) {
 	return (
 		<Layout>
 			<React.Fragment>
-				<AboutWrapper>
+				<AboutWrapper className="wow fadeInUp">
 					<h1>Coronavirus disease (COVID-19)</h1>
 					<p>
 						Coronavirus disease (COVID-19)

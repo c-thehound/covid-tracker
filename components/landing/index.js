@@ -6,6 +6,7 @@ import { getDays } from "../../utils/stats";
 import moment from "moment";
 import { LINE_GRAPH, PATIENT_ZERO_DATE } from "../../utils/vis/constants";
 import Kenya from "./kenya";
+import WorldStatLoader from "../loaders/worldstat";
 
 const DateWrapper = styled.div`
 	height: auto;
@@ -14,6 +15,7 @@ const DateWrapper = styled.div`
 	text-align: center;
 	padding: 25px;
 	margin-bottom: 20px;
+	min-height: 165px;
 	& p {
 		text-transform: uppercase;
 		font-weight: bold;
@@ -58,7 +60,8 @@ const WorldStatsWrapper = styled.ul`
 		padding: 20px;
 		border-radius: 3px;
 		color: rgb(40, 44, 52);
-		min-height: 110px;
+		min-height: 130px;
+		max-height: 130px;
 		@media (max-width: 768px) {
 			padding: 10px;
 			margin: 0px 10px 10px 10px !important;
@@ -67,6 +70,7 @@ const WorldStatsWrapper = styled.ul`
 			text-transform: uppercase;
 			font-family: "Raleway";
 			padding: 5px;
+			margin-bottom: 5px;
 			@media (max-width: 768px) {
 				font-size: 12px !important;
 			}
@@ -79,16 +83,19 @@ const WorldStatsWrapper = styled.ul`
 `;
 
 const Stat = ({ title, value, color }) => (
-	<li style={{ backgroundColor: color, margin: 10 }}>
+	<li
+		style={{ backgroundColor: color, margin: 10 }}
+		className="wow fadeIn"
+	>
 		<h6 style={{ borderBottom: `1px solid ${color}` }}>{title}</h6>
-		<h1>{value}</h1>
+		{value ? <h1>{value}</h1> : <WorldStatLoader bgColor={color} />}
 	</li>
 );
 
 function WorldStats({ deaths, confirmed, recovered }) {
 	const [data, setData] = useState(null);
 	useEffect(() => {
-		async function fetchData() {
+		(async function fetchData() {
 			const res = await fetch(
 				"https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php",
 				{
@@ -103,8 +110,7 @@ function WorldStats({ deaths, confirmed, recovered }) {
 			);
 			const data = await res.json();
 			setData(data);
-		}
-		fetchData();
+		})();
 
 		return () => {
 			setData(null);

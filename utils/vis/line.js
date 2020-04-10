@@ -195,7 +195,7 @@ function drawLineGraph(
 			.transition()
 			.duration(50)
 			.style("visibility", "visible")
-			.style("top", `${y - 250}px`)
+			.style("top", `${y}px`)
 			.style("left", `${x + 56}px`);
 	} // Display the tooltip at the provided co-ordinates
 

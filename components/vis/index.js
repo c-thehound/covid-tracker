@@ -12,6 +12,7 @@ import { truncateObject } from "../../utils/objects";
 import Menu from "./menu";
 import moment from "moment";
 import Cursor from "../../assets/plus.png";
+import { VisLoader, MenuLoader } from "../loaders/vis";
 
 const VisualizationWrapper = styled.div`
 	flex: 1;
@@ -216,17 +217,24 @@ export default function({ data }) {
 	}, [chart, data, transformedData]);
 	return (
 		<React.Fragment>
-			<Menu
-				setChart={setChart}
-				country={data && data.country}
-				chart={chart}
-			/>
-			<VisualizationWrapper
-				className={`viz ${transformedData &&
-					generateClassName(
+			{data ? (
+				<Menu
+					setChart={setChart}
+					country={data && data.country}
+					chart={chart}
+				/>
+			) : (
+				<MenuLoader />
+			)}
+			{transformedData ? (
+				<VisualizationWrapper
+					className={`viz ${generateClassName(
 						transformedData.country
-					)}`}
-			/>
+					)} wow fadeIn`}
+				/>
+			) : (
+				<VisLoader bgColor="#fff" />
+			)}
 		</React.Fragment>
 	);
 }

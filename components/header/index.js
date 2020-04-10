@@ -6,15 +6,16 @@ import { useRouter } from "next/router";
 const HeaderWrapper = styled.div`
 	width: 100%;
 	height: 50px;
-	background-color: rgb(40, 44, 52);
-	margin-bottom: 20px;
+	#background-color: rgb(40, 44, 52);
+	background-color: transparent;
+	margin: -5px;
+	margin-bottom: 10px;
 	padding: 5px;
 	border-radius: 3px;
 	& .title {
 		font-family: "Raleway" !important;
 		color: #fff;
 		& a {
-			color: #fff;
 			& .corona-icon {
 				width: 50px;
 				height: 50px;
@@ -25,16 +26,20 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderMenu = styled.ul`
+	margin: -5px;
 	& li {
 		list-style: none;
 		display: inline-block;
 		padding: 10px;
+		background-color: rgb(40, 44, 52);
+		margin: 5px;
+		border-radius: 3px;
 		&.active {
 			border-bottom: 2px solid #06171a;
 		}
 		& a {
 			text-transform: capitalize;
-			color: #fff;
+			color: #f3f3f3;
 			font-weight: bold;
 			text-decoration: none;
 			font-family: Raleway;

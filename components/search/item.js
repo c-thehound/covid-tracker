@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import styled from "styled-components";
 import Vis from "./itemVis";
@@ -19,9 +19,13 @@ const Analytics = styled.div`
 
 function DataItem({ item, id }) {
 	const [expanded, setExpanded] = useState(false);
+	useEffect(() => {}, []);
 	if (item && item.country_name) {
 		return (
-			<li className={`data-item ${expanded && "open"}`}>
+			<li
+				className={`data-item ${expanded &&
+					"open"} wow fadeInUpBig`}
+			>
 				<div className="container">
 					<div className="expand">
 						<button
