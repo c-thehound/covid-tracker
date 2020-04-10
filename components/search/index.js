@@ -58,6 +58,9 @@ const DataContainer = styled.ul`
 		}
 		& .detail {
 			margin-left: 15px;
+			@media (max-width: 768px) {
+				padding-bottom: 10px;
+			}
 			& .overview {
 				display: flex;
 				& li {
