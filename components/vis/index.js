@@ -18,8 +18,16 @@ const VisualizationWrapper = styled.div`
 	background-color: #fff;
 	border-radius: 3px;
 	min-height: 500px;
+	& .svg{
+		@media(max-width:768px){
+				width:100%;
+				& .graph-container{
+						transform:translate(32px,23px);
+				}
+		}
+	}
 	@media(max-width:768px){
-		min-height:350px;
+		min-height:300px;
 	}
 	font-family: Raleway;
 	//cursor: url(${Cursor}), auto;
@@ -118,8 +126,6 @@ const VisualizationWrapper = styled.div`
 			display: none;
 		}
 		& .tick {
-			&.over {
-			}
 			& line {
 				stroke: #e9e9e9;
 				stroke-opacity: 0.7;
@@ -131,6 +137,9 @@ const VisualizationWrapper = styled.div`
 		& .tick {
 			& text {
 				transform: rotateZ(-60deg) translateX(-18px);
+				@media(max-width:768px){
+				transform: rotateZ(0deg) translateX(0px);
+				}
 			}
 		}
 	}
@@ -138,11 +147,17 @@ const VisualizationWrapper = styled.div`
 		& .ylabel {
 			fill: rgb(40, 44, 52);
 			font-size: 12px;
+			@media(max-width:768px){
+				display:none;
+			}
 		}
 	}
 	& text {
 		font-family: Raleway;
 		color: rgb(40, 44, 52);
+			@media(max-width:768px){
+				font-size:8px;
+			}
 	}
 	& path.domain {
 		stroke: rgb(40, 44, 52);
@@ -150,6 +165,9 @@ const VisualizationWrapper = styled.div`
 	& .line {
 		fill: none;
 		stroke-width: 2px;
+		@media(max-width:768px){
+				stroke-width:1px;
+		}
 		&.cases {
 			stroke: #e19e0d99;
 		}
@@ -191,7 +209,9 @@ export default function({ data }) {
 		} // Let's make the data useful!
 
 		if (transformedData !== null) {
-			draw(transformedData, chart);
+			if (!!window) {
+				draw(transformedData, chart);
+			}
 		} // Draw only when we have usable data
 	}, [chart, data, transformedData]);
 	return (

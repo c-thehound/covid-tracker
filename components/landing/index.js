@@ -58,6 +58,7 @@ const WorldStatsWrapper = styled.ul`
 		padding: 20px;
 		border-radius: 3px;
 		color: rgb(40, 44, 52);
+		min-height: 110px;
 		@media (max-width: 768px) {
 			padding: 10px;
 			margin: 0px 10px 10px 10px !important;

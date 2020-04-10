@@ -68,7 +68,6 @@ function Header() {
 			<HeaderMenu>
 				<Link to="global" />
 				<Link to="countries" />
-				<Link to="cities" />
 				<Link to="about" />
 			</HeaderMenu>
 		</HeaderWrapper>

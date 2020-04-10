@@ -9,7 +9,9 @@ function drawLineGraph(
 	width,
 	margins,
 	maxy,
-	maxx
+	maxx,
+	class_name,
+	windowWidth
 ) {
 	const dotRadius = 3.5;
 	const tooltipWidth = 150;
@@ -20,6 +22,9 @@ function drawLineGraph(
 		.attr("transform", "translate(0," + height + ")")
 		.call(
 			d3.axisBottom(xScale).tickFormat(function(d) {
+				if (windowWidth < 768) {
+					return `${d + 1}`;
+				}
 				return `Day ${d + 1}`;
 			})
 		); // Draw x axis
@@ -69,7 +74,7 @@ function drawLineGraph(
 		.attr("class", "grid y")
 		.call(
 			makeYGridLines()
-				.tickSize(-(width - 50 * 2))
+				.tickSize(-(width - margins.top * 2))
 				.tickFormat("")
 		); // Draw y gridlines
 	/* End draw gridlines*/
@@ -174,7 +179,7 @@ function drawLineGraph(
 	var tooltip = d3
 		.select(".viz")
 		.append("div")
-		.attr("class", "tooltip")
+		.attr("class", `tooltip ${class_name}`)
 		.style("visibility", "hidden");
 
 	function drawTooltip(x, y, data) {
@@ -190,7 +195,7 @@ function drawLineGraph(
 			.transition()
 			.duration(50)
 			.style("visibility", "visible")
-			.style("top", `${y + 380}px`)
+			.style("top", `${y - 250}px`)
 			.style("left", `${x + 56}px`);
 	} // Display the tooltip at the provided co-ordinates
 
@@ -203,7 +208,7 @@ function drawLineGraph(
 			)[0];
 			let y = yValue && yScale(yValue.total_cases);
 			if (x && y) {
-				drawTooltip(x, y, yValue);
+				drawTooltip(x, event.pageY, yValue);
 			}
 		});
 }

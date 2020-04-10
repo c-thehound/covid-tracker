@@ -97,6 +97,9 @@ const MenuWrapper = styled.ul`
 			cursor: pointer;
 			outline: none;
 			color: rgb(40, 44, 52);
+			@media (max-width: 768px) {
+				width: 100%;
+			}
 			&.active {
 				background-color: #f3f3f3;
 				box-shadow: 1px 1px 2px rgb(40, 44, 52);
@@ -107,6 +110,9 @@ const MenuWrapper = styled.ul`
 				background-size: contain;
 				background-repeat: no-repeat;
 				margin-left: 5px;
+				@media (max-width: 768px) {
+					margin: auto;
+				}
 				&.download {
 					background-image: url(${DownloadIcon});
 				}
@@ -153,6 +159,7 @@ function Menu({ setChart, chart, country }) {
 							<div className="icon line"></div>
 						</button>
 					</li>
+					{/*
 					<li>
 						<button
 							className={`${chart ===
@@ -180,8 +187,8 @@ function Menu({ setChart, chart, country }) {
 						>
 							<div className="icon pie"></div>
 						</button>
-					</li>
-					<li class="dl">
+					</li>*/}
+					<li className="dl">
 						<button>
 							Download Chart
 							<div className="icon download"></div>

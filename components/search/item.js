@@ -19,7 +19,7 @@ const Analytics = styled.div`
 
 function DataItem({ item, id }) {
 	const [expanded, setExpanded] = useState(false);
-	if (item) {
+	if (item && item.country_name) {
 		return (
 			<li className={`data-item ${expanded && "open"}`}>
 				<div className="container">
@@ -110,7 +110,7 @@ function DataItem({ item, id }) {
 			</li>
 		);
 	}
-	return <p>Nothing</p>;
+	return null;
 }
 
 export default DataItem;
