@@ -171,8 +171,14 @@ export default function({ data }) {
 				el,
 				`${transformedData.country}.png`,
 				{
-					height: 720,
-					width: 980,
+					height:
+						window.innerWidth < 768
+							? 420
+							: 720,
+					width:
+						window.innerWidth < 768
+							? 360
+							: 980,
 					backgroundColor: "#fff",
 					fonts: [
 						{
