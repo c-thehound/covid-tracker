@@ -13,12 +13,16 @@ import Menu from "./menu";
 import moment from "moment";
 import Cursor from "../../assets/plus.png";
 import { VisLoader, MenuLoader } from "../loaders/vis";
+import downloader from "save-svg-as-png";
 
 const VisualizationWrapper = styled.div`
 	flex: 1;
 	background-color: #fff;
 	border-radius: 3px;
 	min-height: 500px;
+	& text{
+		font-family:Raleway;
+	}
 	& .svg{
 		@media(max-width:768px){
 				width:100%;
@@ -78,40 +82,9 @@ const VisualizationWrapper = styled.div`
 				z-index:1;
 		}
 	}
-	& .dots {
-		& .dot {
-			transition: all 100ms ease-in-out;
-			cursor: pointer;
-			&:hover {
-				r: 7;
-			}
-		}
-		&.cases {
-			& .dot {
-				fill: #e19e0d99;
-			}
-		}
-		&.recoveries {
-			& .dot {
-				fill: #28ad0399;
-			}
-		}
-		&.deaths {
-			& .dot {
-				fill: #9b260499;
-			}
-		}
-	}
 	& .grid {
 		position: relative;
 		z-index: -1;
-		&.y {
-			& .tick:last-child {
-				& line {
-					stroke: rgb(40, 44, 52);
-				}
-			}
-		}
 		&.x {
 			& .tick {
 			&:hover{
@@ -123,21 +96,10 @@ const VisualizationWrapper = styled.div`
 			}
 			}
 		}
-		& .domain {
-			display: none;
-		}
-		& .tick {
-			& line {
-				stroke: #e9e9e9;
-				stroke-opacity: 0.7;
-				stroke-rendering: crispEdges;
-			}
-		}
 	}
 	& .x.axis {
 		& .tick {
 			& text {
-				transform: rotateZ(-60deg) translateX(-18px);
 				@media(max-width:768px){
 				transform: rotateZ(0deg) translateX(0px);
 				}
@@ -146,37 +108,19 @@ const VisualizationWrapper = styled.div`
 	}
 	& .y.axis {
 		& .ylabel {
-			fill: rgb(40, 44, 52);
-			font-size: 12px;
 			@media(max-width:768px){
 				display:none;
 			}
 		}
 	}
 	& text {
-		font-family: Raleway;
-		color: rgb(40, 44, 52);
 			@media(max-width:768px){
 				font-size:8px;
 			}
 	}
-	& path.domain {
-		stroke: rgb(40, 44, 52);
-	}
 	& .line {
-		fill: none;
-		stroke-width: 2px;
 		@media(max-width:768px){
 				stroke-width:1px;
-		}
-		&.cases {
-			stroke: #e19e0d99;
-		}
-		&.deaths {
-			stroke: #9b260499;
-		}
-		&.recoveries {
-			stroke: #28ad0399;
 		}
 	}
 `;
@@ -215,6 +159,34 @@ export default function({ data }) {
 			}
 		} // Draw only when we have usable data
 	}, [chart, data, transformedData]);
+
+	const downloadGraph = function() {
+		if (transformedData) {
+			const node = `SVG-${generateClassName(
+				transformedData.country
+			)}`;
+			console.log(node);
+			var el = document.getElementById(node);
+			downloader.saveSvgAsPng(
+				el,
+				`${transformedData.country}.png`,
+				{
+					height: 720,
+					width: 980,
+					backgroundColor: "#fff",
+					fonts: [
+						{
+							text: "Raleway",
+							url:
+								"https://fonts.googleapis.com/css?family=Raleway&display=swap",
+							format: "woff"
+						}
+					]
+				}
+			);
+		}
+	};
+
 	return (
 		<React.Fragment>
 			{data ? (
@@ -222,6 +194,7 @@ export default function({ data }) {
 					setChart={setChart}
 					country={data && data.country}
 					chart={chart}
+					download={downloadGraph}
 				/>
 			) : (
 				<MenuLoader />

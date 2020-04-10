@@ -20,6 +20,7 @@
     "react-dom": "16.13.1",
     "react-loaders": "^3.0.1",
     "react-motion": "^0.5.2",
+    "save-svg-as-png": "^1.4.17",
     "styled-components": "^5.0.1",
     "url-loader": "^4.0.0",
     "wow.js": "^1.2.2"

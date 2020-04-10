@@ -5,12 +5,12 @@ function WorldStatLoader({ bgColor }) {
 	return (
 		<ContentLoader
 			speed={2}
-			height={"100%"}
-			width={"100%"}
+			height="100%"
+			width="100%"
 			backgroundOpacity={0.1}
 			foregroundOpacity={0.1}
 			foregroundColor={bgColor}
-			viewBox={60}
+			title="World Stat"
 		>
 			<rect
 				x="0"

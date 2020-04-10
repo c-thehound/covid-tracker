@@ -37,20 +37,20 @@ const DataContainer = styled.ul`
 		& .expand {
 			position: absolute;
 			left: 5px;
-			height: 100%;
-			width: 1px;
+			height: 1px;
+			width: 100%;
 			border: 0.005em dashed #c0c0c0;
 			& button {
 				border: 0;
 				height: 15px;
 				background-color: #fff;
 				font-family: "Raleway";
-				font-size: 18px;
+				font-size: 22px;
 				cursor: pointer;
 				color: #c0c0c0;
 				outline: none;
 				position: absolute;
-				margin-left: -3px;
+				margin-top: -12px;
 			}
 			&.open {
 				height: 100px;

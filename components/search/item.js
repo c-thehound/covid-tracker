@@ -7,6 +7,9 @@ import { LINE_GRAPH, PIE_CHART, BAR_GRAPH } from "../../utils/vis/constants";
 const Analytics = styled.div`
 	border-bottom: 1px dashed #c0c0c0;
 	padding-left: 10px;
+	@media (max-width: 768px) {
+		margin: -10px;
+	}
 	&::before {
 		content: "";
 		position: absolute;
@@ -29,6 +32,19 @@ function DataItem({ item, id }) {
 				<div className="container">
 					<div className="expand">
 						<button
+							style={{ left: "0" }}
+							onClick={e =>
+								setExpanded(
+									!expanded
+								)
+							}
+						>
+							+
+						</button>
+						<button
+							style={{
+								right: "0"
+							}}
 							onClick={e =>
 								setExpanded(
 									!expanded

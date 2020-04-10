@@ -11,7 +11,8 @@ function drawLineGraph(
 	maxy,
 	maxx,
 	class_name,
-	windowWidth
+	windowWidth,
+	colors
 ) {
 	const dotRadius = 3.5;
 	const tooltipWidth = 150;
@@ -47,12 +48,21 @@ function drawLineGraph(
 				maxy < 1000 ? "-40px" : "-55px"
 			})`
 		)
+		.style("fill", colors.fontColor)
+		.style("font-size", "12px")
 		.append("text")
 		.text("Number of people."); // Add the label
 
 	/* Make grid lines */
 	function makeXGridLines() {
-		return d3.axisBottom(xScale).ticks(44);
+		console.log(d3.axisBottom(xScale));
+		return (
+			d3
+				.axisBottom(xScale)
+				//.line()
+				//.style("stroke", "rgb(40,44,52)")
+				.ticks(44)
+		);
 	}
 	function makeYGridLines() {
 		return d3.axisLeft(yScale).ticks(44);
@@ -77,6 +87,11 @@ function drawLineGraph(
 				.tickSize(-(width - margins.top * 2))
 				.tickFormat("")
 		); // Draw y gridlines
+
+	svg.selectAll(".grid")
+		.selectAll("line")
+		.style("stroke", "#e9e9e9")
+		.style("stroke-opacity", 0.7); // Style the grid
 	/* End draw gridlines*/
 
 	/* CASES */
@@ -90,6 +105,8 @@ function drawLineGraph(
 			return yScale(d.total_cases); // set the y values for the line generator
 		}); // Cases curve
 
+	console.log(cases);
+
 	svg.append("g")
 		.attr("class", "dots cases")
 		.selectAll("dot")
@@ -97,6 +114,7 @@ function drawLineGraph(
 		.enter()
 		.append("circle")
 		.attr("class", "dot case")
+		.style("fill", colors.cases)
 		.attr("cx", function(d) {
 			return xScale(d.dayFromZero);
 		})
@@ -124,6 +142,7 @@ function drawLineGraph(
 		.enter()
 		.append("circle")
 		.attr("class", "dot death")
+		.style("fill", colors.deaths)
 		.attr("cx", function(d) {
 			return xScale(d.dayFromZero);
 		})
@@ -151,6 +170,7 @@ function drawLineGraph(
 		.enter()
 		.append("circle")
 		.attr("class", "dot recovered")
+		.style("fill", colors.recoveries)
 		.attr("cx", function(d) {
 			return xScale(d.dayFromZero);
 		})
@@ -163,17 +183,26 @@ function drawLineGraph(
 	svg.append("path")
 		.data([data]) // Bind the data
 		.attr("class", "line cases")
-		.attr("d", cases); // Generate Cases Curve
+		.style("fill", "none")
+		.style("stroke-width", "2px")
+		.attr("d", cases) // Generate Cases Curve
+		.style("stroke", colors.cases);
 
 	svg.append("path")
 		.data([data]) // Bind the data
 		.attr("class", "line deaths")
-		.attr("d", deaths); // Generate Deaths curve
+		.style("fill", "none")
+		.style("stroke-width", "2px")
+		.attr("d", deaths) // Generate Deaths curve
+		.style("stroke", colors.deaths);
 
 	svg.append("path")
 		.data([data]) // Bind the data
 		.attr("class", "line recoveries")
-		.attr("d", recovered); // Generate Recoveries curve
+		.style("fill", "none")
+		.style("stroke-width", "2px")
+		.attr("d", recovered) // Generate Recoveries curve
+		.style("stroke", colors.recoveries);
 
 	/* Tooltips */
 	var tooltip = d3
@@ -211,6 +240,43 @@ function drawLineGraph(
 				drawTooltip(x, event.pageY, yValue);
 			}
 		});
+
+	function addLabels() {
+		console.log("labels", data);
+		svg.append("g")
+			.attr("transform", `translate(0,${height + 30})`)
+			.append("rect")
+			.attr("width", "200px")
+			.attr("height", "30px")
+			.attr("y", 10)
+			.attr("x", 0)
+			.attr("rx", 3)
+			.attr("ry", 3)
+			.attr("fill", "#e9e9e9")
+			.append("g")
+			.attr("transform", `translate(0,10)`)
+			.append("text")
+			.attr("x", 5)
+			.attr("dy", "0.9em")
+			.attr("y", 9)
+			.style("color", "#000")
+			.text(`${data[0].country_name}`);
+	} // Add labels
+
+	(function() {
+		svg.selectAll("text").style("color", colors.fontColor);
+		svg.selectAll("path.domain").style("stroke", colors.fontColor);
+		svg.select(".x.axis")
+			.selectAll("text")
+			.style(
+				"transform",
+				`rotateZ(-60deg) translateX(-18px)`
+			);
+
+		svg.selectAll(".grid .domain").style("display", "none");
+
+		addLabels();
+	})(); // Perfom some general styling
 }
 
 export default drawLineGraph;

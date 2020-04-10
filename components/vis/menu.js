@@ -130,7 +130,7 @@ const MenuWrapper = styled.ul`
 	}
 `;
 
-function Menu({ setChart, chart, country }) {
+function Menu({ setChart, chart, country, download }) {
 	return (
 		<MenuWrapper>
 			{country && (
@@ -189,7 +189,11 @@ function Menu({ setChart, chart, country }) {
 						</button>
 					</li>*/}
 					<li className="dl">
-						<button>
+						<button
+							onClick={e =>
+								download()
+							}
+						>
 							Download Chart
 							<div className="icon download"></div>
 						</button>

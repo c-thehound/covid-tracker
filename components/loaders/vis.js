@@ -12,8 +12,8 @@ function MenuLoader() {
 			backgroundOpacity={0.3}
 		>
 			<rect
-				x=""
-				y=""
+				x="0"
+				y="0"
 				rx="3"
 				ry="3"
 				height="20px"

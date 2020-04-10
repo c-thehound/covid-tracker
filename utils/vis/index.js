@@ -60,6 +60,14 @@ function draw(data, type) {
 			bottom: 50
 		}; // Container Margins
 
+		var colors = {
+			cases: "#e19e0d99",
+			recoveries: "#28ad0399",
+			deaths: "#9b260499",
+			gridLines: "#e9e9e9",
+			fontColor: "rgb(40,44,52)"
+		};
+
 		var width = document.getElementById(`svg-viz-${class_name}`)
 			.offsetWidth; // Container width
 		const height = document.getElementById(`svg-viz-${class_name}`)
@@ -83,6 +91,7 @@ function draw(data, type) {
 			.select(`.viz.${class_name}`)
 			.append("svg")
 			.attr("class", "svg")
+			.attr("id", `SVG-${class_name}`)
 			.attr("height", height + margins.bottom + margins.top) // Set Height
 			.attr("width", width + margins.left + margins.right) // Set Width
 			.append("g")
@@ -127,7 +136,8 @@ function draw(data, type) {
 					maxy,
 					maxx,
 					class_name,
-					windowWidth
+					windowWidth,
+					colors
 				);
 			case BAR_GRAPH:
 				return drawBarChart(
