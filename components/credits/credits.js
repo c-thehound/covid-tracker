@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import TwitterIcon from "../../assets/twitter.png";
+import GitHubIcon from "../../assets/Octocat.png";
 
 const Credits = styled.div`
 	bottom: 10px;
@@ -9,11 +11,26 @@ const Credits = styled.div`
 	font-family: "Raleway";
 	margin-bottom: 3px;
 	& span {
-		font-weight: bold;
+		font-weight: 400;
 		font-size: 13px;
+		margin: 0 5px;
 		& a {
 			color: #f3f3f3;
 			text-decoration: none;
+			background-image: url(${TwitterIcon});
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin: auto;
+			width: 20px;
+			height: 20px;
+			&.twitter {
+				background-image: url(${TwitterIcon});
+			}
+			&.git {
+				background-image: url(${GitHubIcon});
+			}
 		}
 	}
 `;
@@ -21,19 +38,19 @@ const Credits = styled.div`
 export default function() {
 	return (
 		<Credits>
-			by <span>Castin</span>
+			Made with love ❤️ by Castin
 			<br />
 			<div>
 				<p>
-					Email :{" "}
-					<span>browncastin@gmail.com</span>
-				</p>
-				<p>
-					Twitter :{" "}
 					<span>
-						<a href="https://twitter.com/mackah_c">
-							@mackah_c
-						</a>
+						<a
+							className="twitter"
+							href="https://twitter.com/mackah_c"
+						></a>
+						<a
+							className="git"
+							href="https://github.com/c-thehound"
+						></a>
 					</span>
 				</p>
 			</div>

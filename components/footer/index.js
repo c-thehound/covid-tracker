@@ -12,6 +12,7 @@ const FooterWrapper = styled.div`
 	margin: 70px 0px 10px 0px;
 	padding: 10px;
 	border-radius: 3px;
+	text-align: center;
 `;
 
 function Footer() {
