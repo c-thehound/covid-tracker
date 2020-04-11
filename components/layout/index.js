@@ -74,6 +74,24 @@ function Layout(props) {
 					name="description"
 					content="Track corona virus"
 				/>
+
+				<meta
+					name="twitter:title"
+					content="Coronavirus(COVID-19)"
+				/>
+				<meta
+					name="twitter:description"
+					content="Tracker for the coronavirus pandemic"
+				/>
+				<meta
+					name="twitter:image"
+					content="/coronav.jpg"
+				/>
+				<meta
+					name="twitter:card"
+					content="/coronav.jpg"
+				/>
+
 				<link
 					href="https://fonts.googleapis.com/css?family=Fredoka+One|Pacifico|Raleway&display=swap"
 					rel="stylesheet"
