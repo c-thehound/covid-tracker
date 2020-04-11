@@ -55,7 +55,6 @@ function drawLineGraph(
 
 	/* Make grid lines */
 	function makeXGridLines() {
-		console.log(d3.axisBottom(xScale));
 		return (
 			d3
 				.axisBottom(xScale)
@@ -104,8 +103,6 @@ function drawLineGraph(
 		.y(function(d) {
 			return yScale(d.total_cases); // set the y values for the line generator
 		}); // Cases curve
-
-	console.log(cases);
 
 	svg.append("g")
 		.attr("class", "dots cases")
@@ -242,7 +239,6 @@ function drawLineGraph(
 		});
 
 	function addLabels() {
-		console.log("labels", data);
 		svg.append("g")
 			.attr("transform", `translate(0,${height + 30})`)
 			.append("rect")
