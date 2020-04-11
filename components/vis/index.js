@@ -20,6 +20,7 @@ const VisualizationWrapper = styled.div`
 	background-color: #fff;
 	border-radius: 3px;
 	min-height: 500px;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 	& text{
 		font-family:Raleway;
 	}
@@ -185,7 +186,7 @@ export default function({ data }) {
 							text: "Raleway",
 							url:
 								"https://fonts.googleapis.com/css?family=Raleway&display=swap",
-							format: "woff"
+							format: "woff2"
 						}
 					]
 				}

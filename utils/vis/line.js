@@ -260,7 +260,9 @@ function drawLineGraph(
 	} // Add labels
 
 	(function() {
-		svg.selectAll("text").style("color", colors.fontColor);
+		svg.selectAll("text")
+			.style("color", colors.fontColor)
+			.style("font-family", "Raleway");
 		svg.selectAll("path.domain").style("stroke", colors.fontColor);
 		svg.select(".x.axis")
 			.selectAll("text")

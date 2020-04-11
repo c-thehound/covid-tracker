@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import CoronaIcon from "../../assets/icon1.png";
+import styled, { keyframes } from "styled-components";
+import CoronaIcon from "../../assets/coronaicon.png";
 import { useRouter } from "next/router";
 
 const HeaderWrapper = styled.div`
@@ -25,6 +25,24 @@ const HeaderWrapper = styled.div`
 	}
 `;
 
+const rotateWhileScaling = keyframes`
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(90deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	75% {
+		transform: rotate(240deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+`;
+
 const HeaderMenu = styled.ul`
 	margin: -5px;
 	& li {
@@ -34,6 +52,25 @@ const HeaderMenu = styled.ul`
 		background-color: rgb(40, 44, 52);
 		margin: 5px;
 		border-radius: 3px;
+		position: relative;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		&.global {
+			margin-left
+			50px;
+		}
+		& div.icon {
+			animation: ${rotateWhileScaling} 1s infinite linear;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			left: -50px;
+			top: 0;
+			background-image: url(${CoronaIcon});
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+		}
 		&.active {
 			border-bottom: 2px solid #06171a;
 		}
@@ -50,7 +87,7 @@ const HeaderMenu = styled.ul`
 	}
 `;
 
-function Link({ to }) {
+function Link({ to, children, c }) {
 	const router = useRouter();
 	const [active, setActive] = React.useState(false);
 	React.useEffect(() => {
@@ -60,7 +97,8 @@ function Link({ to }) {
 		}
 	}, []);
 	return (
-		<li className={active ? "active" : ""}>
+		<li className={active ? `active ${c || ""}` : `${c || ""}`}>
+			{children}
 			<a href={`/${to !== "global" ? to : ""}`}>{to}</a>
 		</li>
 	);
@@ -71,7 +109,9 @@ function Header() {
 	return (
 		<HeaderWrapper>
 			<HeaderMenu>
-				<Link to="global" />
+				<Link to="global" c="global">
+					<div className="icon" />
+				</Link>
 				<Link to="countries" />
 				<Link to="about" />
 			</HeaderMenu>

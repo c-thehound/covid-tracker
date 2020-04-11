@@ -26,9 +26,11 @@ const DataContainer = styled.ul`
 		padding: 10px;
 		background-color: #fff;
 		border-radius: 3px;
-		margin: 5px 0;
+		margin: 10px 0;
 		position: relative;
 		height: auto;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+			0 10px 10px -5px rgba(0, 0, 0, 0.04);
 		font-family: Raleway;
 		& .container {
 			height: 100%;
