@@ -101,7 +101,7 @@ const VisualizationWrapper = styled.div`
 		& .tick {
 			& text {
 				@media(max-width:768px){
-				transform: rotateZ(0deg) translateX(0px);
+				transform: rotateZ(0deg) translateX(0px) !important;
 				}
 			}
 		}

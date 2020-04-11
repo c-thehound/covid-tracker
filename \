@@ -28,7 +28,7 @@ const Credits = styled.div`
 			background-color: #fff;
 			padding: 5px;
 			border-radius: 3px;
-			border: 1px solid rgba(40, 44, 55, 0.3);
+			border:1px solid rgb(40,44,55);
 			&.twitter {
 				background-image: url(${TwitterIcon});
 			}
@@ -45,7 +45,7 @@ export default function() {
 			Made with love ❤️ by Castin
 			<br />
 			<div>
-				<p style={{ marginTop: 10 }}>
+				<p>
 					<span>
 						<a
 							className="twitter"

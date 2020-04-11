@@ -264,10 +264,9 @@ function drawLineGraph(
 		svg.selectAll("path.domain").style("stroke", colors.fontColor);
 		svg.select(".x.axis")
 			.selectAll("text")
-			.style(
-				"transform",
-				`rotateZ(-60deg) translateX(-18px)`
-			);
+			.style("transform", function() {
+				return `rotateZ(-60deg) translateX(-18px)`;
+			});
 
 		svg.selectAll(".grid .domain").style("display", "none");
 

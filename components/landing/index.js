@@ -11,20 +11,23 @@ import WorldStatLoader from "../loaders/worldstat";
 const DateWrapper = styled.div`
 	height: auto;
 	border-radius: 3px;
-	background-color: rgb(40, 44, 52);
+	background-color: #fff;
 	text-align: center;
 	padding: 25px;
 	margin-bottom: 20px;
+	margin-top: 10px;
 	min-height: 165px;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+		0 10px 10px -5px rgba(0, 0, 0, 0.04);
 	& p {
 		text-transform: uppercase;
 		font-weight: bold;
 		font-family: "Raleway";
 		font-size: 14px;
-		color: #f3f3f3;
+		color: rgb(40, 44, 52);
 		margin-bottom: 10px;
 		& span {
-			color: #fff;
+			color: rgb(40, 44, 52);
 			margin-left: 10px;
 			font-size: 32px;
 		}
@@ -32,7 +35,7 @@ const DateWrapper = styled.div`
 	& h2,
 	h1 {
 		font-family: "Raleway";
-		color: #fff;
+		color: rgb(40, 44, 52);
 	}
 	& h1 {
 		@media (max-width: 768px) {
@@ -84,7 +87,12 @@ const WorldStatsWrapper = styled.ul`
 
 const Stat = ({ title, value, color }) => (
 	<li
-		style={{ backgroundColor: color, margin: 10 }}
+		style={{
+			backgroundColor: color,
+			margin: 10,
+			boxShadow:
+				"0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+		}}
 		className="wow fadeIn"
 	>
 		<h6 style={{ borderBottom: `1px solid ${color}` }}>{title}</h6>
