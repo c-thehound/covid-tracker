@@ -51,7 +51,7 @@ function Layout(props) {
 				<title>Coronavirus(COVID-19)</title>
 				<meta
 					property="og:site_name"
-					content="coronavirus-tracker"
+					content="Coronavirus(COVID-19)"
 				/>
 				<meta
 					property="og:title"
@@ -72,7 +72,7 @@ function Layout(props) {
 				<meta property="og:type" content="website" />
 				<meta
 					name="description"
-					content="Track corona virus"
+					content="Tracker for the coronavirus pandemic"
 				/>
 
 				<meta

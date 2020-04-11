@@ -90,8 +90,8 @@ function About(props) {
 					</ul>
 					<p>
 						These symptoms are usually mild
-						and beging gradually. Some
-						people become infected but don't
+						and begin gradually. Some people
+						become infected but don't
 						develop any symptoms and don't
 						feel unwell
 					</p>
