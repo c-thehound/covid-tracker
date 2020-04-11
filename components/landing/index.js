@@ -132,7 +132,7 @@ function WorldStats({ deaths, confirmed, recovered }) {
 				value={data && data["total_cases"]}
 			/>
 			<Stat
-				title="total recovered patients"
+				title="total recoveries"
 				color={"#28ad0333"}
 				value={data && data["total_recovered"]}
 			/>
