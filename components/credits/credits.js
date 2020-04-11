@@ -21,12 +21,9 @@ const Credits = styled.div`
 export default function() {
 	return (
 		<Credits>
-			by <span>Castin Masika</span>
+			by <span>Castin</span>
 			<br />
 			<div>
-				<p>
-					Phone : <span>+(254)745820775</span>
-				</p>
 				<p>
 					Email :{" "}
 					<span>browncastin@gmail.com</span>
