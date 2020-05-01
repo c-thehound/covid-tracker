@@ -135,7 +135,7 @@ function Menu({ setChart, chart, country, download }) {
 		<MenuWrapper>
 			{country && (
 				<li className=" container chart-header">
-					{country}
+					{country.country_name}
 					<span className="cases">cases</span>
 					<span className="recovered">
 						recovered

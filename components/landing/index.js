@@ -48,7 +48,7 @@ const DateWrapper = styled.div`
 	}
 `;
 
-const WorldStatsWrapper = styled.ul`
+export const WorldStatsWrapper = styled.ul`
 	display: flex;
 	margin: -10px;
 	padding-bottom: 10px;
@@ -84,7 +84,7 @@ const WorldStatsWrapper = styled.ul`
 	}
 `;
 
-const Stat = ({ title, value, color }) => (
+export const Stat = ({ title, value, color }) => (
 	<li
 		style={{
 			backgroundColor: color,

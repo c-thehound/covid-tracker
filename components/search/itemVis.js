@@ -18,7 +18,10 @@ function ItemVis({ country, type, setChart }) {
 					}
 				}
 			);
-			const data = await res.json();
+			const raw_data = await res.json();
+			const data = Object.keys(raw_data).map(
+				key => raw_data[key]
+			);
 			setData(data);
 		}
 		fetchData();
@@ -27,7 +30,6 @@ function ItemVis({ country, type, setChart }) {
 			setData(null);
 		};
 	}, []);
-
 	return <Vis data={data} />;
 }
 

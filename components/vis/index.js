@@ -152,7 +152,6 @@ export default function({ data }) {
 				 */
 			});
 			setTransformedData(copy);
-			console.log("transformed", copy);
 		} // Let's make the data useful!
 
 		if (transformedData !== null) {
@@ -167,7 +166,6 @@ export default function({ data }) {
 			const node = `SVG-${generateClassName(
 				transformedData.country
 			)}`;
-			console.log(node);
 			var el = document.getElementById(node);
 			downloader.saveSvgAsPng(
 				el,
@@ -194,13 +192,12 @@ export default function({ data }) {
 			);
 		}
 	};
-
 	return (
 		<React.Fragment>
 			{data ? (
 				<Menu
 					setChart={setChart}
-					country={data && data.country}
+					country={data && data.pop()}
 					chart={chart}
 					download={downloadGraph}
 				/>
