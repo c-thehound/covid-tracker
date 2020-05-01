@@ -133,7 +133,7 @@ export default function({ data }) {
 	useEffect(() => {
 		if (!!data && !transformedData) {
 			let copy = data;
-			copy.stat_by_country.forEach(function(d) {
+			copy.forEach(function(d) {
 				d.record_date = moment(
 					d.record_date.split(" ")[0]
 				); // Am splitting because I only want the date part
@@ -152,6 +152,7 @@ export default function({ data }) {
 				 */
 			});
 			setTransformedData(copy);
+			console.log("transformed", copy);
 		} // Let's make the data useful!
 
 		if (transformedData !== null) {
@@ -209,7 +210,7 @@ export default function({ data }) {
 			{transformedData ? (
 				<VisualizationWrapper
 					className={`viz ${generateClassName(
-						transformedData.country
+						transformedData[0].country_name
 					)} wow fadeIn`}
 				/>
 			) : (

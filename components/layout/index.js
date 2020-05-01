@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import LandingBG from "../../assets/bgcovid.jpg";
 import fetch from "isomorphic-unfetch";
 import Footer from "../footer";
 import Header from "../header";

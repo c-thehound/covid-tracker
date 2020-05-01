@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import LandingBG from "../../assets/bgcovid.jpg";
 import Vis from "../vis";
 import { getDays } from "../../utils/stats";
 import moment from "moment";
