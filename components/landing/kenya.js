@@ -17,6 +17,7 @@ const KenyaFlags = styled.div`
 `;
 
 function KenyaStats({ data }) {
+	console.log(data);
 	return (
 		<React.Fragment>
 			<KenyaFlags />
@@ -66,9 +67,10 @@ function Kenya() {
 			setData(null);
 		};
 	}, []);
+	console.log("Kenya", data);
 	return (
 		<React.Fragment>
-			<KenyaStats data={data && data.stat_by_country.pop()} />
+			<KenyaStats data={data && data.stat_by_country[0]} />
 			<Vis data={data} />
 		</React.Fragment>
 	);

@@ -133,7 +133,6 @@ export default function({ data }) {
 	useEffect(() => {
 		if (!!data && !transformedData) {
 			let copy = data;
-			console.log("copy", copy);
 			copy.stat_by_country.forEach(function(d) {
 				d.record_date = moment(
 					d.record_date.split(" ")[0]
