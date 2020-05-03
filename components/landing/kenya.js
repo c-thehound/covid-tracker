@@ -57,10 +57,7 @@ function Kenya() {
 					}
 				}
 			);
-			const raw_data = await res.json();
-			const data = Object.keys(raw_data).map(
-				key => raw_data[key]
-			);
+			const data = await res.json();
 			setData(data);
 		}
 		fetchData();
@@ -71,7 +68,7 @@ function Kenya() {
 	}, []);
 	return (
 		<React.Fragment>
-			<KenyaStats data={data && data.pop()} />
+			<KenyaStats data={data && data.stat_by_country.pop()} />
 			<Vis data={data} />
 		</React.Fragment>
 	);

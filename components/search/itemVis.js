@@ -18,10 +18,7 @@ function ItemVis({ country, type, setChart }) {
 					}
 				}
 			);
-			const raw_data = await res.json();
-			const data = Object.keys(raw_data).map(
-				key => raw_data[key]
-			);
+			const data = await res.json();
 			setData(data);
 		}
 		fetchData();

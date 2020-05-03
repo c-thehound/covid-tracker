@@ -133,7 +133,8 @@ export default function({ data }) {
 	useEffect(() => {
 		if (!!data && !transformedData) {
 			let copy = data;
-			copy.forEach(function(d) {
+			console.log("copy", copy);
+			copy.stat_by_country.forEach(function(d) {
 				d.record_date = moment(
 					d.record_date.split(" ")[0]
 				); // Am splitting because I only want the date part
@@ -197,7 +198,7 @@ export default function({ data }) {
 			{data ? (
 				<Menu
 					setChart={setChart}
-					country={data && data.pop()}
+					country={data && data.country}
 					chart={chart}
 					download={downloadGraph}
 				/>
@@ -207,7 +208,7 @@ export default function({ data }) {
 			{transformedData ? (
 				<VisualizationWrapper
 					className={`viz ${generateClassName(
-						transformedData[0].country_name
+						transformedData.country
 					)} wow fadeIn`}
 				/>
 			) : (
