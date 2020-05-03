@@ -42,7 +42,7 @@ const Credits = styled.div`
 export default function() {
 	return (
 		<Credits>
-			Made with love ❤️ by Castin
+			Made with ❤️ by Castin
 			<br />
 			<div>
 				<p style={{ marginTop: 10 }}>
